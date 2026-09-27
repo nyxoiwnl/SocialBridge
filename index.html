@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialBridge - Transfiere tu Música</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>SocialBridge</h1>
+        <p>Transfiere tus playlists libremente, al estilo TuneMyMusic.</p>
+    </header>
+
+    <main class="wizard-container">
+        <!-- Barra de progreso superior -->
+        <div class="stepper">
+            <div class="step active" id="step-nav-1">1. Origen</div>
+            <div class="step" id="step-nav-2">2. Playlists</div>
+            <div class="step" id="step-nav-3">3. Destino</div>
+            <div class="step" id="step-nav-4">4. Transferir</div>
+        </div>
+
+        <!-- Paso 1: Seleccionar Origen -->
+        <section class="wizard-step active" id="step-1">
+            <h2>Selecciona la plataforma de origen</h2>
+            <p class="subtitle">¿De dónde quieres sacar tu música?</p>
+            <div class="platform-grid">
+                <button class="platform-btn spotify" onclick="selectSource('Spotify')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" width="50">
+                    <span>Spotify</span>
+                </button>
+                <button class="platform-btn youtube" onclick="selectSource('YouTube')">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" width="50">
+                    <span>YouTube</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Paso 2: Seleccionar Playlists -->
+        <section class="wizard-step" id="step-2">
+            <h2>Elige las playlists a transferir</h2>
+            <p class="subtitle">Conectado a <span id="source-name" style="font-weight:bold;"></span> (Simulación)</p>
+            <div id="playlist-container" class="playlist-list">
+                <!-- Se llena con JS -->
+            </div>
+            <div class="wizard-actions">
+                <button class="btn btn-secondary" onclick="prevStep()">Volver</button>
+                <button class="btn btn-primary" onclick="nextStep()">Siguiente</button>
+            </div>
+        </section>
+
+        <!-- Paso 3: Seleccionar Destino -->
+        <section class="wizard-step" id="step-3">
+            <h2>Selecciona la plataforma de destino</h2>
+            <p class="subtitle">¿A dónde quieres enviar tus playlists?</p>
+            <div class="platform-grid" id="destination-grid">
+                <!-- Se llena con JS para no mostrar la misma que el origen -->
+            </div>
+            <div class="wizard-actions">
+                <button class="btn btn-secondary" onclick="prevStep()">Volver</button>
+            </div>
+        </section>
+
+        <!-- Paso 4: Confirmación y Transferencia -->
+        <section class="wizard-step" id="step-4">
+            <h2>Resumen de transferencia</h2>
+            <div class="summary-box">
+                <p>Moviendo música de <strong id="summary-source" style="color: #3a86ff;"></strong> hacia <strong id="summary-dest" style="color: #3a86ff;"></strong></p>
+                <ul id="summary-playlists" class="summary-list"></ul>
+            </div>
+            <div class="wizard-actions">
+                <button class="btn btn-secondary" onclick="prevStep()">Volver</button>
+                <button class="btn btn-success" onclick="startTransfer()">¡Comenzar Transferencia!</button>
+            </div>
+        </section>
+        
+        <!-- Pantalla de Éxito -->
+        <section class="wizard-step" id="step-success">
+            <h2 style="color: #1DB954; font-size: 2rem;">🎵 ¡Transferencia en progreso!</h2>
+            <p style="margin-bottom: 2rem; color: #ccc;">Estamos buscando las canciones y armando tu nueva playlist.</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <p id="progress-text" style="margin-top: 1rem;">0%</p>
+            <button id="btn-restart" class="btn btn-primary" onclick="location.reload()" style="margin-top: 20px; display: none;">Hacer otra transferencia</button>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

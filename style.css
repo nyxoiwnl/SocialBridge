@@ -1,0 +1,219 @@
+:root {
+    --bg-color: #0f0f13;
+    --card-bg: #1a1a24;
+    --text-color: #ffffff;
+    --spotify-color: #1DB954;
+    --youtube-color: #FF0000;
+    --primary-color: #5c67ff;
+    --success-color: #20c997;
+    --border-color: #2a2a35;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #b3ffab, #12fff7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.wizard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid var(--border-color);
+}
+
+/* Stepper */
+.stepper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.step {
+    color: #555;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.step.active {
+    color: var(--primary-color);
+}
+
+.step.completed {
+    color: var(--success-color);
+}
+
+/* Wizard Steps */
+.wizard-step {
+    display: none;
+    text-align: center;
+    animation: fadeIn 0.4s;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #aaa;
+    margin-bottom: 2rem;
+}
+
+/* Platform Grid */
+.platform-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.platform-btn {
+    background-color: #252533;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.platform-btn:hover {
+    transform: translateY(-5px);
+    border-color: #444;
+}
+
+.platform-btn.spotify:hover { border-color: var(--spotify-color); box-shadow: 0 0 15px rgba(29, 185, 84, 0.2); }
+.platform-btn.youtube:hover { border-color: var(--youtube-color); box-shadow: 0 0 15px rgba(255, 0, 0, 0.2); }
+
+/* Playlists */
+.playlist-list {
+    text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 2rem;
+}
+
+.playlist-item {
+    background-color: #252533;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.playlist-item:hover {
+    border-color: var(--primary-color);
+}
+
+.playlist-item input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Actions */
+.wizard-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+.btn {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    color: white;
+}
+
+.btn-primary { background-color: var(--primary-color); }
+.btn-primary:hover { background-color: #4954e6; }
+
+.btn-secondary { background-color: #333; }
+.btn-secondary:hover { background-color: #444; }
+
+.btn-success { background-color: var(--success-color); }
+.btn-success:hover { background-color: #1aa179; }
+
+/* Summary */
+.summary-box {
+    background-color: #252533;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+.summary-list {
+    list-style-position: inside;
+    margin-top: 1rem;
+    color: #ccc;
+}
+
+/* Progress bar */
+.progress-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #252533;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--spotify-color), var(--primary-color));
+    transition: width 0.3s;
+}
